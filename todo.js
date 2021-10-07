@@ -122,9 +122,3 @@ window.addEventListener("load", () => {
         insertTodo(desc.value, new Date(due.value), priority.value);
     });
 });
-
-
-
-
-
-

@@ -29,12 +29,13 @@ window.addEventListener("load", () => {
     // this code will run once the web page is fully loaded
     
     // add a click event listener
-    document.querySelector("#add").addEventListener("click", () => {
+    document.querySelector("#add").addEventListener("click", (evt) => {
         evt.preventDefault();
 
-        const width = document.querySelector("form");
+        const form = document.querySelector("form");
+        const width = form.querySelector("#width");
         const height = form.querySelector("#height");
 
         createGrid(width.value, height.value);
-    })
-})
+    });
+});
