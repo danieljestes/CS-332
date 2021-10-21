@@ -1,0 +1,12 @@
+[
+    {
+        "desc": "Add/Drop ends",
+        "due": "2021-09-02",
+        "priority": "high"
+    },
+    {
+        "desc": "Pass/Fail deadline",
+        "due": "2021-10-29",
+        "priority": "high"
+    }
+]

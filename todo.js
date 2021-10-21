@@ -1,16 +1,37 @@
 // code for the to do app
 "use strict";
 
+// store all todo items
+const todos = {};
+
+let todoCounter = 0;
+
 /**
  * Add a to do item to our list
  * Create the list if there is none yet
  * @param {string} dueDate 
  * @param {string} description 
  * @param {string} priority 
+ * @param {boolean} store: store alue to local storage?
  */
-function insertTodo(description, dueDate, priority) {
+function insertTodo(description, dueDate, priority, store=true) {
     // access to the div for storing the todo list
     const todo = document.querySelector("#todo");
+
+    const key = todoCounter++;
+
+    // only store if instructed
+    if(store) {
+        // add object to todos object
+        todos[key] = {
+            desc: description,
+            due: dueDate,
+            priority: priority
+        };
+        
+        // save to local storage
+        window.localStorage.setItem("todos", JSON.stringify(todos));
+    }
 
     // check if table exists
     if (!todo.querySelector("#todo-table")) {
@@ -36,7 +57,7 @@ function insertTodo(description, dueDate, priority) {
 
         // add this in as a child of the todo DOM node
         // when we parse a string of html, we only care about the "body"
-        todo.appendChild(table.body);
+        todo.appendChild(table.body.firstElementChild);
 
     } // if
 
@@ -62,8 +83,15 @@ function insertTodo(description, dueDate, priority) {
         evt.preventDefault(); // stops browser from opening link
         // tell tableBody to remove the row node
         tableBody.removeChild(row);
+
+        // remove from todo object
+        delete todos[key];
+
+        if (store) {
+            // save to localstorage
+            window.localStorage.setItem("todos", JSON.stringify(todos));
+        }
     });
-    
 }
 
 // set a timeout function to check all due dates every second
@@ -87,6 +115,21 @@ setInterval( () => {
 // register an event on a dom node by using the addEventListener method
 window.addEventListener("load", () => {
     // this code will run once the web page is fully loaded
+
+    // load from localstorage
+    const oldTodosString = window.localStorage.getItem("todos");
+    let oldTodos;
+    if (!oldTodosString) {
+        oldTodos = {};
+    } else {
+        oldTodos = JSON.parse(oldTodosString);
+    }
+    // remove the item so we can rebuild it
+    window.localStorage.removeItem("todos");
+    // loop over all of the values stored in the object
+    Object.values(oldTodos).forEach((todo) => {
+        insertTodo(todo.desc, new Date(todo.due), todo.priority);
+    });
 
     // add a click event listener
     document.querySelector("#add").addEventListener("click", (evt) => {
@@ -121,4 +164,14 @@ window.addEventListener("load", () => {
         // add todo item!
         insertTodo(desc.value, new Date(due.value), priority.value);
     });
+
+    //fetch the global todo items
+    fetch("todo.json")
+        .then(response => response.json())
+        .then(data => {
+            // data is array of todo items to add in
+            data.forEach( item => {
+                insertTodo(item.desc, new Date(item.due), item.priority, false);
+            })
+        });
 });
