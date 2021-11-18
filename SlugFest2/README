@@ -1,0 +1,6 @@
+KNOWN BUGS
+- The displayed names under the favorites tab on each profile has the incorrect format. CAUSED BY the "name" key in each user favorites JSON is different than normal.
+- Replies are placed at the end of whatever feed/timelime they are on. CAUSED BY the function that places them is asynchronous and so waits until everything else is placed
+before continueing.
+- Some slime text is forced lowercase. CAUSED BY add_slime_text_links() method.
+- Some #s not linked. CAUSED BY my unfamiliarity with JS RegEx and case insensitive matching.
