@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Example node.js code",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Jestes <danieljestes102@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
