@@ -1,0 +1,7 @@
+Bootstrap Documentaion Examples - https://getbootstrap.com/docs/5.1/examples/sign-in/
+
+Bootstrap Documentaion - https://getbootstrap.com/docs
+
+Bootstrap Icons - https://icons.getbootstrap.com/
+
+Class materials - https://sakai.stlawu.edu/portal/site/CS-332-01-FA21/page/918cf7ee-3f23-46a8-ad5a-ad5f3f5fabe6
