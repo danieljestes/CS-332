@@ -1,0 +1,76 @@
+/* Comment */
+
+.container {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header, footer {
+    background-color: rgb(172, 22, 44);
+    color: white;
+    padding: 1rem;
+
+    border-radius: 2rem;
+}
+
+.italic {
+    font-style: italic;
+}
+
+#hello {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header nav li {
+    display: inline;
+}
+
+header nav li a {
+    padding: 1rem;
+    background-color: #4b2b23;
+    color: #8d984c;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: larger;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header nav li a:hover {
+    background-color: #f2c200;
+    color: #4b2b23;
+}
+
+section article > h1 {
+    font-size: x-large;
+    color: #4b2b23;
+    text-align: right;
+    border-bottom: 2px solid #4b2b23;
+    padding-right: 1rem;
+}
+
+.flex-row {
+    display: flex;
+}
+
+header figure {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 40%;
+}
+
+header img {
+    width: 100%;
+}
+
+#header-text {
+    flex-grow: 4;
+    flex-shrink: 1;
+    flex-basis: 60%;
+}
+
+section {
+    flex-grow: 1;
+    flex-basis: 70%;
+    margin-left: 1rem;
+}
