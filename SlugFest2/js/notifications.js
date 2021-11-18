@@ -40,7 +40,7 @@ function createSlime(slimeData) {
                         <p class="mb-2">
                             <a href="${slimeData.reslimed_status.user.screen_name.split("@")[1]}.html" style="text-decoration: None; color: inherit;"><strong>${slimeData.reslimed_status.user.name}</strong></a> reslimed you
                             <div class="mt-0">
-                                <span class="text-muted">${add_slime_text_links(slimeData.reslimed_status, slimeData.reslimed_status.text)}</span><a href="#"></a>
+                                <span class="text-muted">${addTextLinks(slimeData.reslimed_status, slimeData.reslimed_status.text)}</span><a href="#"></a>
                             </div>
                         </p>
                     </div>
@@ -62,7 +62,7 @@ function createSlime(slimeData) {
                         <p class="mb-2">
                             <a href="${slimeData.user.screen_name.split("@")[1]}.html" style="text-decoration: None; color: inherit;"><strong>${slimeData.user.name}</strong></a> replied to your Slime
                             <div class="mt-0">
-                                <span class="text-muted">${add_slime_text_links(slimeData, slimeData.text)}</span><a href="#"></a>
+                                <span class="text-muted">${addTextLinks(slimeData, slimeData.text)}</span><a href="#"></a>
                             </div>
                         </p>
                     </div>
@@ -72,24 +72,4 @@ function createSlime(slimeData) {
         `
     }
     document.querySelector("#slime_cards").appendChild(slimeText);
-}
-
-/**
- * Finds @s and #s in slime text and replaces it with a (semi) functional link in HTML
- * @param {object} slimeData 
- * @param {string} text 
- * @returns modified slime text containing links
- */
- function add_slime_text_links(slimeData, text) {
-    if (slimeData.entities.hashtags.length > 0){
-        for (let i = 0; i < slimeData.entities.hashtags.length; i++){
-            text = text.replace(slimeData.entities.hashtags[i], `<a href="#">${slimeData.entities.hashtags[i]}</a>`);
-        }
-    }
-    if (slimeData.entities.user_mentions.length > 0){
-        for (let i = 0; i < slimeData.entities.user_mentions.length; i++){
-            text = text.replace(slimeData.entities.user_mentions[i], `<a href="${slimeData.entities.user_mentions[i].split("@")[1]}.html">${slimeData.entities.user_mentions[i]}</a>`);
-        }
-    }
-    return text;
 }
