@@ -1,6 +1,10 @@
 "use scrict";
 
+//
 // Several common functions used throughout SlugFest
+// These are only those that are repeated in at least two of the other JS files
+// Any used less are written once in that JS file
+//
 
 /**
  * Create a Slime DOM and return it
